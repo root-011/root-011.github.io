@@ -195,7 +195,7 @@
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Fri Aug 22 2025 21:10:42 GMT+0800">2025-08-22 21:10:42</span>
+                    <span class="datetime" data-updated="Sat Aug 23 2025 12:42:52 GMT+0800">2025-08-23 12:42:52</span>
                 </span>
             
         
@@ -222,7 +222,88 @@
                     
 
                     
-                         
+                         <ul>
+<li>简介： 注重页面行为，在HTML文件中<script></script>标签内的代码</li>
+</ul>
+<h1 id="关于使用"><a href="#关于使用" class="headerlink" title="关于使用"></a>关于使用</h1><p>浏览器开发者工具（检查）中的控制台（console）即JavaScript控制台</p>
+<p>在head或body标签里添加<script></script>(建议放body标签末尾：加载更快利于渲染)</p>
+<p>可单独成文件（后缀<code>.js</code>),则在html中用</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;文件名&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">//属性src表示source</span><br></pre></td></tr></table></figure>
+
+<p>注释：<code>//</code></p>
+<p>console.log(‘该信息会在控制台出现’)；</p>
+<p>VScode终端（Ctrl+&#96;)中输入node 【文件名.js】 可得浏览器控制台同样结果<!--node（运行环境）允许js在服务端运行，使js可进行后端开发--></p>
+<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><h2 id="变量与常量"><a href="#变量与常量" class="headerlink" title="变量与常量"></a>变量与常量</h2><ul>
+<li>常量：<ul>
+<li>var：全局作用域</li>
+<li>let：声明时可不初始化；可被修改</li>
+<li>const：声明时必须初始化数值；不可被修改，但若声明的是数组或对象，可对其内部元素进行修改</li>
+</ul>
+</li>
+</ul>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>&#x3D;&#x3D;  为不考虑数值类型的等</p>
+<p>&#x3D;&#x3D;&#x3D;为考虑数值类型的等</p>
+<p>三目运算符：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> x = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">const</span> size = x &gt; <span class="number">5</span> ? <span class="string">&quot;big&quot;</span> : <span class="string">&quot;small&quot;</span>;</span><br><span class="line"><span class="comment">// ? 为 =后条件 满足时</span></span><br><span class="line"><span class="comment">// ：为 =后条件 不满足时</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul>
+<li>String：用<code>&quot;&quot;</code> 或 <code>&#39;&#39;</code>  ;如<code>x = &quot;Reese&quot;;</code></li>
+<li>Number：包括小数与整数</li>
+<li>Boolean：true 或 false</li>
+<li>null：值为空；如<code>y = null ;</code></li>
+<li>undefined：值未定义（与null区分）；<code>let y = undefined ;</code>   等价于  <code>let y;</code></li>
+</ul>
+<p>显示数据类型：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> y)</span><br><span class="line"><span class="comment">//若类型为null会输出为object</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p><code>const user = &quot;John&quot;</code>;</p>
+<p> <code>const age = 40 </code>;</p>
+<p>拼接打印</p>
+<ul>
+<li><pre><code class="javascript">//使用 引号 与 加号 拼接
+console.log(user + &quot;is&quot; + age + &quot;years old.&quot;);
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">  </span><br><span class="line">- ```javascript</span><br><span class="line">  //使用 `` 围拼接内容； $&#123;变量/常量&#125;</span><br><span class="line">  console.log(`$&#123;user&#125; is $&#123;age&#125; years old.`);</span><br><span class="line">  //也可赋值后再输出</span><br><span class="line">  const sentence = `...`;</span><br><span class="line">  console.log(sentence);</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+<p>使用属性（不加括号）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">user = <span class="string">&quot;John&quot;</span>;</span><br><span class="line"><span class="comment">//长度(含空格等字符）。length属性</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(user.<span class="property">length</span>);<span class="comment">//输出4</span></span><br></pre></td></tr></table></figure>
+
+<p>使用方法（加括号）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">user = <span class="string">&quot;John&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//全大写。toUpperCase方法</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(user.<span class="title function_">toUpperCase</span>());<span class="comment">//输出JOHN</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//全小写。toLowerCase方法</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(user.<span class="title function_">toLowerCase</span>());<span class="comment">//输出 john</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//分割字符串。substring（a，b）返回字符串中 索引a ~ 索引b-1 的部分，索引从0开始</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(user.<span class="title function_">substring</span>(<span class="number">0</span>,<span class="number">2</span>));<span class="comment">//输出Jo </span></span><br><span class="line"></span><br><span class="line"><span class="comment">//方法叠加</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(user.<span class="title function_">substring</span>(<span class="number">0</span>,<span class="number">2</span>).<span class="property">toLowerCase</span>);<span class="comment">//输出jo</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//转化为数组。split(&#x27;分割点（不含在数组内）&#x27;)</span></span><br><span class="line"><span class="comment">//最小分割:用空字符串 &#x27;&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(user.<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>));<span class="comment">//输出[&#x27;J&#x27;,&#x27;o&#x27;,&#x27;h&#x27;,&#x27;n&#x27;];数组长度为4</span></span><br><span class="line"><span class="comment">//特定分割点</span></span><br><span class="line">s = <span class="string">&quot;aa,bb,cc&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(s.<span class="title function_">split</span>(<span class="string">&quot;,&quot;</span>));<span class="comment">//输出[&#x27;aa&#x27;,&#x27;bb&#x27;,&#x27;cc&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>内每个元素可以是不同类型</p>
+<ul>
+<li><p>构造</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//构造函数Array（）</span></span><br><span class="line"><span class="keyword">const</span> n = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="string">&#x27;abc&#x27;</span>,<span class="literal">true</span>);</span><br><span class="line"><span class="comment">//直接用[]声明数组</span></span><br><span class="line"><span class="keyword">const</span> nn =[<span class="number">1</span>,<span class="number">2</span>,<span class="string">&#x27;abc&#x27;</span>,<span class="literal">true</span>];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>索引</p>
+<p>用[ ],从0开始</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> n = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(n[<span class="number">1</span>]);<span class="comment">//输出为2</span></span><br><span class="line">n[<span class="number">1</span>] = <span class="number">4</span>;<span class="comment">//可重新命名元素</span></span><br><span class="line"><span class="comment">//得特定元素索引;indexOf()</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(n.<span class="title function_">indexOf</span>(<span class="number">1</span>));<span class="comment">//输出0；</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>增、删</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> nn = [<span class="string">&quot;bb&quot;</span>,<span class="string">&quot;cc&quot;</span>];</span><br><span class="line"><span class="comment">//增在数组末尾；push()</span></span><br><span class="line">nn.<span class="title function_">push</span>(<span class="string">&quot;dd&quot;</span>);</span><br><span class="line"><span class="comment">//增在数组头部;unshift()</span></span><br><span class="line">nn.<span class="title function_">unshift</span>(<span class="string">&quot;aa&quot;</span>);</span><br><span class="line"><span class="comment">//删数组末尾元素;pop()</span></span><br><span class="line">nn.<span class="title function_">pop</span>();<span class="comment">//删&quot;dd&quot;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>对象数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> todos[</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">id</span>: <span class="number">1</span>,</span><br><span class="line">        <span class="attr">text</span>:<span class="string">&quot;sleep&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">id</span>: <span class="number">2</span>,</span><br><span class="line">        <span class="attr">text</span>:<span class="string">&quot;fly&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(todos[<span class="number">1</span>].<span class="property">text</span>);<span class="comment">//输出fly   </span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//判断是否是数组;Array.isArray()</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Array</span>.<span class="title function_">isArray</span>(<span class="string">&quot;pen&quot;</span>));<span class="comment">//&quot;pen&quot;不是数组，输出false</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>使用特殊for循环</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//let后的循环变量任意设，of后为被循环的数组</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> todo <span class="keyword">of</span> todos)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(todo.<span class="property">id</span>);<span class="comment">//todo为循环中的每一项</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p> 所有属性用{ }括起，用逗号分隔，用键值对形式，属性也可以是数组、对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义对象 末尾加;</span></span><br><span class="line"><span class="keyword">const</span> man = &#123;</span><br><span class="line">    name_ = <span class="string">&quot;John&quot;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">40</span>,</span><br><span class="line">    <span class="attr">hobbies</span>:[<span class="string">&quot;gun&quot;</span>,<span class="string">&quot;suit&quot;</span>],<span class="comment">//数组</span></span><br><span class="line">    <span class="attr">address</span>:&#123;</span><br><span class="line">        <span class="attr">state</span>:<span class="string">&quot;unknown&quot;</span>,</span><br><span class="line">        <span class="attr">city</span>:<span class="string">&quot;unknown&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;;<span class="comment">//对象定义结束加;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//访问属性用.</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(man.<span class="property">name_</span>, name.<span class="property">age</span>);<span class="comment">//输出John 40</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(man.<span class="property">hobbies</span>[<span class="number">1</span>]);<span class="comment">//输出&quot;suit&quot;(数组)</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(man.<span class="property">adress</span>.<span class="property">city</span>);<span class="comment">//输出&quot;unknown&quot;(对象)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//添加新属性</span></span><br><span class="line">man.<span class="property">number</span> = <span class="string">&quot;xxxx&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="keyword">const</span> &#123;</span><br><span class="line">    name_,</span><br><span class="line">    age,</span><br><span class="line">    <span class="attr">address</span>:&#123; city &#125;,</span><br><span class="line">&#125; = man;<span class="comment">// = 后为对象名</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(city);<span class="comment">//输出&quot;unknown&quot;(直接访问)</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h1><p>一种数据格式（与对象数组类似）</p>
+<p>js转JSON：</p>
+<ol>
+<li><p>freeformatter.com -&gt; JSON Formatter  -&gt;FORMAT JSON</p>
+</li>
+<li><p>JSON.stringify(【对象数组】)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> todoJSON = <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(todos);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(todoJSON);</span><br></pre></td></tr></table></figure></li>
+</ol>
+
                     
                 </div>
 
@@ -245,14 +326,14 @@
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/1970/01/01/HTML/"
-                                   title="HTML"
+                                   href="/1970/01/01/HTTP/"
+                                   title="HTTP"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">HTML</span>
+                                        <span class="post-nav-title-item text-ellipsis">HTTP</span>
                                         <span class="post-nav-item">上一篇</span>
                                     </span>
                                 </a>
@@ -262,11 +343,11 @@
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/1970/01/01/HTTP/"
-                                   title="HTTP"
+                                   href="/1970/01/01/XSS/"
+                                   title="XSS"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">HTTP</span>
+                                        <span class="post-nav-title-item text-ellipsis">XSS</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">

