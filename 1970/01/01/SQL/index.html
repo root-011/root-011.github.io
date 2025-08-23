@@ -195,7 +195,7 @@
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Sat Aug 23 2025 12:40:40 GMT+0800">2025-08-23 12:40:40</span>
+                    <span class="datetime" data-updated="Sat Aug 23 2025 17:33:41 GMT+0800">2025-08-23 17:33:41</span>
                 </span>
             
         
@@ -227,7 +227,7 @@
 <h1 id="MySQL简介"><a href="#MySQL简介" class="headerlink" title="MySQL简介"></a>MySQL简介</h1><p>DBMS软件系统（不是数据库），通过该系统管理、维护数据库。MySQL对应关系型数据库【用行和列组织数据】，MySQL【类Exel】里的数据库为Schema【类Exel文件】，数据库里有不同的Table（表格）【类Exel里的不同标签】</p>
 <p>数据库在服务器下，每台服务器可有多个数据库</p>
 <p><strong>SQL</strong>：编程语言</p>
-<h1 id="数据类"><a href="#数据类" class="headerlink" title="数据类"></a>数据类</h1><h1 id="型"><a href="#型" class="headerlink" title="型"></a>型</h1><table>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><table>
 <thead>
 <tr>
 <th>名称</th>
@@ -371,7 +371,7 @@
 <li><p>插入或替换一行（有就替换，没有就插入）</p>
 <p><strong>REPLACE INTO</strong>【表名】（【列名1】，【列名2】）<strong>VALUES</strong>（【值1】，【值2】）</p>
 </li>
-<li><p>插入或更新（无该记录则插入（VALUES后），有该记录就更新（UPDATE后）</p>
+<li><p>插入或更新（无该记录则插入（VALUES后），有该记录就更新（UPDATE后: 当插入的数据导致唯一键或主键冲突时，根据指定的列和值对现有记录进行更新)</p>
 <p><strong>INSERT INTO</strong> 【表名】（【列名1】，【列名2】）<strong>VALUES</strong>（【值1】，【值2】） <strong>ON DUPLICATE KEY UPDATE</strong>  【列名1】&#x3D;【值1】【列名2】&#x3D;【值2】；</p>
 </li>
 <li><p>插入或忽略（有记录就不执行）</p>
@@ -600,13 +600,13 @@
 <ul>
 <li><p>SUBSTRING(字符串, 起始位置, 长度)</p>
 <p>逐个尝试找正确的密码</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">SUBSTRING</span>((<span class="keyword">SELECT</span> password <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> unser<span class="operator">=</span><span class="string">&#x27;admin&#x27;</span>),<span class="number">1</span>,<span class="number">1</span>)<span class="operator">=</span><span class="string">&#x27;a&#x27;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">SUBSTRING</span>((<span class="keyword">SELECT</span> password <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> <span class="keyword">user</span><span class="operator">=</span><span class="string">&#x27;admin&#x27;</span>),<span class="number">1</span>,<span class="number">1</span>)<span class="operator">=</span><span class="string">&#x27;a&#x27;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>sleep(N)</p>
 <p> IF(SUBSTRING(    password,1,1)&#x3D; ‘a’     , SLEEP(5) , 0 )</p>
 </li>
 </ul>
-<h1 id="MSSQL盲注提权"><a href="#MSSQL盲注提权" class="headerlink" title="MSSQL盲注提权"></a>MSSQL盲注提权</h1><p> Microsoft <u>SQL Server</u> </p>
+<h1 id="MSSQL盲注提权"><a href="#MSSQL盲注提权" class="headerlink" title="MSSQL盲注提权"></a>MSSQL盲注提权</h1><p> Microsoft SQL Server </p>
 <h2 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h2><ol>
 <li>存在 SQL 注入点 </li>
 <li>当前数据库账户权限较高（最好是 <code>sysadmin</code> 角色） </li>
@@ -628,7 +628,8 @@
 </ol>
 <p>   <code>EXEC xp_cmdshell &#39;whoami&#39;;</code></p>
 <p>   若无回显可：</p>
-<pre><code>`EXEC xp_cmdshell &#39;whoami &gt; C:\\inetpub\\wwwroot\\a.txt&#39;;`&lt;!-- 这里的文件会被 Web 服务直接对外公开 --&gt;
+<pre><code>`EXEC xp_cmdshell &#39;whoami &gt; C:\\inetpub\\wwwroot\\a.txt&#39;;`
+&lt;!-- 这里的文件会被 Web 服务直接对外公开 --&gt;
 </code></pre>
 <p>   浏览器访问 <code>http://目标网站/a.txt</code> 查看。</p>
 <ol start="5">
@@ -674,10 +675,8 @@
 <ol start="5">
 <li>系统层面提权</li>
 </ol>
-<p>MySQL UDF 中fuction创建插件的名称有什么要求</p>
+<p>MySQL UDF 中fuction创建插件的名称要求：</p>
 <p>只能创建so文件中存在的函数</p>
-<p>用    map</p>
-<p>CREATE FUNCTION sys_eval RETURNS ST</p>
 
                     
                 </div>
@@ -718,11 +717,11 @@
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/1970/01/01/JavaScript/"
-                                   title="JavaScript"
+                                   href="/1970/01/01/XSS/"
+                                   title="XSS"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">JavaScript</span>
+                                        <span class="post-nav-title-item text-ellipsis">XSS</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
