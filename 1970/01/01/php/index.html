@@ -195,7 +195,7 @@
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Sat Aug 23 2025 17:20:31 GMT+0800">2025-08-23 17:20:31</span>
+                    <span class="datetime" data-updated="Sat Aug 23 2025 17:47:03 GMT+0800">2025-08-23 17:47:03</span>
                 </span>
             
         
@@ -260,19 +260,11 @@
 <p><code>&lt;br&gt;</code> : <code>echo &#39;&lt;br&gt;&#39;;</code>  <code>echo $a.&#39;&lt;br&gt;&#39;;</code> </p>
 <h2 id="控制结构"><a href="#控制结构" class="headerlink" title="控制结构"></a>控制结构</h2><h3 id="if条件"><a href="#if条件" class="headerlink" title="if条件"></a>if条件</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">if</span> (条件表达式): <span class="meta">?&gt;</span></span><br><span class="line">  <span class="comment">#条件成立时输出的HTML内容 （任意多行)</span></span><br><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">elseif</span> (其他条件): <span class="meta">?&gt;</span>   &lt;!-- 可无 --&gt;</span><br><span class="line">  <span class="comment">#其他条件成立时输出的HTML内容</span></span><br><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">else</span>: <span class="meta">?&gt;</span>               &lt;!-- 可无 --&gt;</span><br><span class="line">  <span class="comment">#所有条件都不成立时输出的HTML内容 </span></span><br><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">endif</span>; <span class="meta">?&gt;</span><span class="comment">#if语句结束</span></span><br></pre></td></tr></table></figure>
 <p>PHP 将跳过条件语句未达成的段落，即使该段落位于 PHP 开始和结束标记之外。 </p>
-<h3 id="while-for循环"><a href="#while-for循环" class="headerlink" title="while,for循环"></a>while,for循环</h3><ul>
-<li><pre><code class="php+HTML">&lt;p&gt;
-    &lt;?php while (条件): ?&gt;
-  &lt;!-- 循环内容 --&gt;
-    &lt;?php endwhile; ?&gt;
+<h3 id="while-for循环"><a href="#while-for循环" class="headerlink" title="while,for循环"></a>while,for循环</h3> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- while循环 --&gt;</span><br><span class="line">&lt;?php while (条件): ?&gt;</span><br><span class="line">   &lt;!-- 循环内容 --&gt;</span><br><span class="line">&lt;?php endwhile; ?&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- for循环 --&gt;</span><br><span class="line">&lt;?php for (初值; 条件; 步进): ?&gt;</span><br><span class="line">    &lt;!-- 循环内容 --&gt;</span><br><span class="line">&lt;?php endfor; ?&gt;</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">- ```php+HTML</span><br><span class="line">  &lt;?php for (初值; 条件; 步进): ?&gt;</span><br><span class="line">      &lt;!-- 循环内容 --&gt;</span><br><span class="line">  &lt;?php endfor; ?&gt;</span><br></pre></td></tr></table></figure>
 
-……
-</code></pre>
-</li>
-</ul>
+
 <h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><table>
 <thead>
 <tr>
@@ -795,14 +787,14 @@
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/1970/01/01/XSS/"
-                                   title="XSS"
+                                   href="/1970/01/01/SQL/"
+                                   title="SQL"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">XSS</span>
+                                        <span class="post-nav-title-item text-ellipsis">SQL</span>
                                         <span class="post-nav-item">上一篇</span>
                                     </span>
                                 </a>
