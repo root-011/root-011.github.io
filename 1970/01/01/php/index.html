@@ -195,7 +195,7 @@
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Sat Aug 23 2025 17:50:44 GMT+0800">2025-08-23 17:50:44</span>
+                    <span class="datetime" data-updated="Sun Aug 24 2025 18:52:37 GMT+0800">2025-08-24 18:52:37</span>
                 </span>
             
         
@@ -695,6 +695,17 @@
 </li>
 </ul>
 </li>
+<li><p>prepare(【SQL模板语句】)：使用预先写好的SQL语句的模板：$conn-&gt;prepare（）</p>
+<p>bind_param(“类型说明符”, 变量1, 变量2,  …)：把具体的数据填充到模板的问号位置；–&gt;   类型：”s”,”i”,”d”,”b” (组合写法如”si”)：$stmt-&gt;bind_param(）</p>
+<p>execute()：执行已经准备好的SQL语句：$stmt-&gt;execute()</p>
+<p>store_result()：把查询结果保存起来</p>
+<p>num_rows：查看查询到了多少行数据</p>
+</li>
+<li><p>密码存储加密与验证</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hash</span> = <span class="title function_ invoke__">password_hash</span>(<span class="string">&quot;password&quot;</span>, PASSWORD_DEFAULT);</span><br><span class="line"><span class="title function_ invoke__">password_verify</span>(<span class="string">&quot;password&quot;</span>, <span class="variable">$hash</span>); <span class="comment">//返回true或false</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>fetch_assoc()：从数据库查询结果中取出一行数据，并以关联数组的形式返回</p>
+</li>
 </ul>
 <p>count():用于获取数组长度</p>
 <p>is_array(): 判断是否是数组 </p>
@@ -743,11 +754,14 @@
 <h1 id="❗-表单"><a href="#❗-表单" class="headerlink" title="❗ 表单"></a>❗ 表单</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$q</span> = <span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;q&#x27;</span>])? <span class="title function_ invoke__">htmlspecialchars</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;q&#x27;</span>]) : <span class="string">&#x27;&#x27;</span>;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>从 通过GET方法传递的参数 中获取名为 <strong>q</strong>的参数<strong>值</strong>，如果存在，就将其进行HTML转义后赋给<strong>变量q</strong>；如果不存在，则赋值为空字符串。 </li>
-<li>isset函数检查_GET数组中是否存在<u>键名为</u>‘q’的元素 </li>
-<li>htmlspecialchars()函数将特殊字符转换为HTML实体，以防止跨站脚本攻击（XSS&#x2F;CSS） 。(&amp;  “  ‘  &lt;  &gt;)</li>
+<li><p>从 通过GET方法传递的参数 中获取name为 <strong>q</strong>的参数<strong>值</strong>，如果存在，就将其进行HTML转义后赋给<strong>变量q</strong>；如果不存在，则赋值为空字符串。 </p>
+</li>
+<li><p>isset函数检查_GET数组中是否存在<u>键名为</u>‘q’的元素 </p>
+</li>
+<li><p>htmlspecialchars()函数将特殊字符转换为HTML实体，以防止跨站脚本攻击（XSS&#x2F;CSS） 。(&amp;  “  ‘  &lt;  &gt;)</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$safe_text</span> = <span class="title function_ invoke__">htmlspecialchars</span>( $原始文本, $转换规则, $字符编码 );</span><br><span class="line"><span class="comment">/*ENT_QUOTES：转义单引号 &#x27; 和双引号 &quot;</span></span><br><span class="line"><span class="comment">ENT_COMPAT：默认值，只转义双引号 &quot;</span></span><br><span class="line"><span class="comment">ENT_NOQUOTES：不转义引号*/</span></span><br></pre></td></tr></table></figure></li>
 </ul>
-<p>用trim() 函数去除用户输入数据中不必要的字符 (如：空格，tab，换行)。</p>
+<p>用 <code>trim()</code> 函数去除用户输入数据中不必要的字符 (如：空格，tab，换行)。</p>
 <p>用stripslashes()函数去除用户输入数据中的反斜杠 ()</p>
 <p> $_SERVER[“REQUEST_METHOD”]  检测表单是否被提交 </p>
 <h2 id="基础框架"><a href="#基础框架" class="headerlink" title="基础框架"></a>基础框架</h2><h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>欢迎<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello FZUer~<span class="tag">&lt;/<span class="name">h1</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span> <span class="attr">action</span>=<span class="string">&#x27;hello_.php&#x27;</span>&gt;</span></span><br><span class="line">        输入内容：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;txt&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -787,14 +801,14 @@
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/1970/01/01/XSS/"
-                                   title="XSS"
+                                   href="/1970/01/01/SQL/"
+                                   title="SQL"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">XSS</span>
+                                        <span class="post-nav-title-item text-ellipsis">SQL</span>
                                         <span class="post-nav-item">上一篇</span>
                                     </span>
                                 </a>
